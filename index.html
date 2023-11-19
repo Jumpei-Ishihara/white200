@@ -70,7 +70,7 @@
           padding: 20px;
           font-size: 24px;
         }
-        #colorButton:hover {
+        #colorButton:active {
           transform: scale(0.9);
         }
       }
@@ -81,7 +81,7 @@
     <div id="colorDisplay">
       <!-- ここに色情報を表示 -->
     </div>
-    <button id="colorButton" onclick="changeColor()">あんねん</button>
+    <button id="colorButton" onclick="changeColor()" ontouchstart="">あんねん</button>
 
     <script>
       // 各RGB成分を16進数に変換後に連結
