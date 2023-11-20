@@ -16,10 +16,18 @@
         background-color: #999;
         touch-action: manipulation;
       }
+
       .title {
         margin-top: 32px;
         font-size: 56px;
         color: #fff;
+      }
+
+      .top_text {
+        margin-top: 0;
+        font-size: 16px;
+        color: #fff;
+        font-weight: bold;
       }
 
       #colorDisplay {
@@ -34,6 +42,7 @@
         border: 2px solid #333;
         background-color: rgb(255, 255, 255);
       }
+
       #colorButton {
         margin-top: 16px;
         padding: 40px;
@@ -43,21 +52,31 @@
         color: #000;
         border: 1px solid #000;
         border-radius: 8px;
-        
       }
+
       #colorButton:active {
         transform: scale(0.9);
       }
 
-      @media (max-width: 600px) {
+      .bottom_text {
+        text-align: center;
+        font-size: 16px;
+        margin-top: 16px;
+      }
+
+      @media (max-width: 764px) {
         body {
           padding: 8px;
         }
 
         .title {
-          font-size: 28px;
+          font-size: 24px;
           margin-top: 56px;
           margin-bottom: 32px;
+        }
+
+        .top_text {
+          font-size: 10px;
         }
 
         #colorDisplay {
@@ -70,18 +89,32 @@
           padding: 20px;
           font-size: 24px;
         }
+
         #colorButton:active {
           transform: scale(0.9);
+        }
+
+        .bottom_text {
+          font-size: 10px;
         }
       }
     </style>
   </head>
   <body>
     <h1 class="title">白って200色あんねんボタン</h1>
+    <p class="top_text">
+      ボタンを押すと数ある白色の中から一色をランダムで表示します。
+    </p>
     <div id="colorDisplay">
       <!-- ここに色情報を表示 -->
     </div>
-    <button id="colorButton" onclick="changeColor()" ontouchstart="">あんねん</button>
+    <button id="colorButton" onclick="changeColor()" ontouchstart="">
+      あんねん
+    </button>
+    <p class="bottom_text">
+      そうだったそうだった。 ”場合の数”も”16進数”も<br />
+      これ作るために勉強したんだった。
+    </p>
 
     <script>
       // 各RGB成分を16進数に変換後に連結
@@ -104,9 +137,9 @@
       function changeColor() {
         // RGBをランダムで生成
         // RGBをそれぞれ249-255の範囲に限定
-        const randomRed = Math.floor(Math.random() * 7) + 249; // 0以上1未満の浮動小数点数×7の小数点切り捨て+249
-        const randomGreen = Math.floor(Math.random() * 7) + 249;
-        const randomBlue = Math.floor(Math.random() * 7) + 249;
+        const randomRed = 255 - Math.floor(Math.random() * 7); // 255 - 0~6(0以上1未満の浮動小数点数×7の小数点切り捨て)
+        const randomGreen = 255 - Math.floor(Math.random() * 7);
+        const randomBlue = 255 - Math.floor(Math.random() * 7);
 
         // RGBを構築
         const randomColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
